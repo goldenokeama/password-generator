@@ -4,8 +4,13 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+}
+
+body {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -18,6 +23,8 @@ body {
 .container {
   width: 550px;
   background: #1f2937;
+
+  padding: 115px 52px;
 }
 
 .heading {
@@ -26,11 +33,69 @@ body {
   font-style: ExtraBold;
   font-size: 40px;
   line-height: 40px;
+  letter-spacing: -2.5%;
 
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.heading .random-password-text {
+  color: #10b981;
   width: 354px;
+  font-size: 34px;
+}
+
+.subtext {
+  width: 372px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #d5d4d8;
+  letter-spacing: 0%;
+
+  margin: 0;
+  margin-bottom: 51px;
+}
+
+.generate-passwords-btn {
+  padding: 9px 17px;
+  background: #10b981;
+  border: none;
+  border-radius: 6px;
+
+  font-family: inherit;
+  color: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  box-shadow: 0px 1px 2px 0px #0000000d;
+  margin-bottom: 35px;
 }
 
 .passwords-container {
   border-top: 1px solid #2f3e53;
   width: 446px;
+  padding-top: 35px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.passwords-container .first-password,
+.passwords-container .second-password {
+  width: 211px;
+  height: 39px;
+  border-radius: 6px;
+
+  background: #273549;
+
+  color: #55f991;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0%;
+
+  text-align: center;
+  padding: 3px;
 }
