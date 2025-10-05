@@ -91,28 +91,69 @@ const characters = [
   "?",
   "/",
 ];
+const symbolsChar = [
+  "~",
+  "`",
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "_",
+  "-",
+  "+",
+  "=",
+  "{",
+  "[",
+  "}",
+  "]",
+  ",",
+  "|",
+  ":",
+  ";",
+  "<",
+  ">",
+  ".",
+  "?",
+  "/",
+];
+const numbersChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 const generatePasswordsBtn = document.getElementById("generate-passwords-btn");
 const firstPasswordEl = document.getElementById("first-password-el");
 const secondPasswordEl = document.getElementById("second-password-el");
+
 const symbolsToggleEl = document.getElementById("symbols-toggle");
-
-let modifiedCharacters = [];
-let isSymbolsIncluded = true;
-
-generatePasswordsBtn.addEventListener("click", generatePasswords);
+const numbersToggleEl = document.getElementById("numbers-toggle");
 
 let passwordLength = 15;
+let isSymbolsIncluded = true;
+let isNumbersIncluded = true;
 
-function getPassword(characterCollection, limit, lengthOfPassword) {
-  let password = "";
+generatePasswordsBtn.addEventListener("click", function () {
+  generatePasswords(characters);
+});
 
-  for (let i = 0; i < lengthOfPassword; i++) {
-    let randomIndex = Math.floor(Math.random() * limit);
-    password += characterCollection[randomIndex];
+function getPasswords(characterCollection, limit, lengthOfPassword) {
+  let passwords = [];
+
+  for (let i = 0; i < 2; i++) {
+    let password = "";
+
+    for (let i = 0; i < lengthOfPassword; i++) {
+      let randomIndex = Math.floor(Math.random() * limit);
+      password += characterCollection[randomIndex];
+    }
+
+    passwords.push(password);
   }
-  // console.log(password.length);
-  return password;
+
+  return passwords;
 }
 
 function renderPasswords(firstPassword, secondPassword) {
@@ -120,54 +161,48 @@ function renderPasswords(firstPassword, secondPassword) {
   secondPasswordEl.textContent = secondPassword;
 }
 
-function generatePasswords() {
-  if (modifiedCharacters.length === 0) {
-    const firstPassword = getPassword(
-      characters,
-      characters.length,
-      passwordLength
-    );
-    const secondPassword = getPassword(
-      characters,
-      characters.length,
-      passwordLength
-    );
-
-    renderPasswords(firstPassword, secondPassword);
-  } else {
-    const firstPassword = getPassword(
-      modifiedCharacters,
-      modifiedCharacters.length,
-      passwordLength
-    );
-    const secondPassword = getPassword(
-      modifiedCharacters,
-      modifiedCharacters.length,
-      passwordLength
-    );
-
-    renderPasswords(firstPassword, secondPassword);
+function generatePasswords(charsCollection) {
+  if (!isSymbolsIncluded) {
+    charsCollection = charsCollection.filter(function (char) {
+      return !symbolsChar.includes(char);
+    });
   }
+
+  if (!isNumbersIncluded) {
+    charsCollection = charsCollection.filter(function (char) {
+      return !numbersChar.includes(char);
+    });
+  }
+
+  const passwordsArray = getPasswords(
+    charsCollection,
+    charsCollection.length,
+    passwordLength
+  );
+
+  renderPasswords(passwordsArray[0], passwordsArray[1]);
+}
+
+function clearPasswords() {
+  renderPasswords("", "");
 }
 
 symbolsToggleEl.addEventListener("change", (e) => {
   if (e.target.checked) {
     isSymbolsIncluded = true;
-    setState();
+    clearPasswords();
   } else {
     isSymbolsIncluded = false;
-    setState();
+    clearPasswords();
   }
 });
 
-function setState() {
-  // clearing the generated passwords if any
-  renderPasswords("", "");
-
-  if (isSymbolsIncluded) {
-    modifiedCharacters = [];
+numbersToggleEl.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    isNumbersIncluded = true;
+    clearPasswords();
   } else {
-    const indexOfStartingSymbol = characters.indexOf("~");
-    modifiedCharacters = characters.slice(0, indexOfStartingSymbol);
+    isNumbersIncluded = false;
+    clearPasswords();
   }
-}
+});
