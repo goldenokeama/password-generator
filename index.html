@@ -11,25 +11,37 @@
       </h1>
       <p class="subtext">Never use an insecure password again.</p>
 
-      <!-- Smbols Toggle 👇 -->
-      <div class="toggle-wrapper">
-        <p>Symbols</p>
-        <input type="checkbox" id="symbols-toggle" class="checkbox" checked />
+      <div class="features">
+        <div class="password-length-wrapper">
+          <p>Length</p>
+          <input
+            type="number"
+            class="input-password-length"
+            value="15"
+            id="input-password-length"
+          />
+        </div>
 
-        <label for="symbols-toggle" class="toggle-label">
-          <span class="toggle-ball"></span>
-        </label>
-      </div>
+        <!-- Smbols Toggle 👇 -->
+        <div class="toggle-wrapper">
+          <p>Symbols</p>
+          <input type="checkbox" id="symbols-toggle" class="checkbox" checked />
 
-      <!-- Number Toggle 👇 -->
-      <div class="toggle-wrapper">
-        <p>Numbers</p>
+          <label for="symbols-toggle" class="toggle-label">
+            <span class="toggle-ball"></span>
+          </label>
+        </div>
 
-        <input type="checkbox" id="numbers-toggle" class="checkbox" checked />
+        <!-- Number Toggle 👇 -->
+        <div class="toggle-wrapper">
+          <p>Numbers</p>
 
-        <label for="numbers-toggle" class="toggle-label">
-          <span class="toggle-ball"></span>
-        </label>
+          <input type="checkbox" id="numbers-toggle" class="checkbox" checked />
+
+          <label for="numbers-toggle" class="toggle-label">
+            <span class="toggle-ball"></span>
+          </label>
+        </div>
       </div>
 
       <button id="generate-passwords-btn" class="generate-passwords-btn">

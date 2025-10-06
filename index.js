@@ -128,6 +128,7 @@ const generatePasswordsBtn = document.getElementById("generate-passwords-btn");
 const firstPasswordEl = document.getElementById("first-password-el");
 const secondPasswordEl = document.getElementById("second-password-el");
 
+const passwordLengthInput = document.getElementById("input-password-length");
 const symbolsToggleEl = document.getElementById("symbols-toggle");
 const numbersToggleEl = document.getElementById("numbers-toggle");
 
@@ -186,6 +187,13 @@ function generatePasswords(charsCollection) {
 function clearPasswords() {
   renderPasswords("", "");
 }
+
+passwordLengthInput.addEventListener("input", function (e) {
+  if (e.target.value < 0) {
+    e.target.value = 0;
+  }
+  passwordLength = e.target.value;
+});
 
 symbolsToggleEl.addEventListener("change", (e) => {
   if (e.target.checked) {

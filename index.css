@@ -101,6 +101,41 @@ body {
   padding: 3px;
 }
 
+.features {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.password-length-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dotted #2f3e53;
+  border-bottom: 1px dotted #2f3e53;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+.password-length-wrapper > p {
+  font-size: 20px;
+  line-height: 28px;
+  color: #d5d4d8;
+  margin: 0;
+}
+
+.input-password-length {
+  width: 60px;
+  line-height: 30px;
+  outline: none;
+  border: 1px solid #2f3e53;
+  font-size: 25px;
+  border-radius: 6px;
+  text-align: center;
+  color: #10b981;
+  background: #1f2937;
+}
+
 .toggle-wrapper {
   display: flex;
   align-items: center;
@@ -109,11 +144,11 @@ body {
   padding-bottom: 2px;
   margin-bottom: 10px;
 }
+
 .toggle-wrapper > p {
   font-size: 20px;
   line-height: 28px;
   color: #d5d4d8;
-  /* color: #10b981; */
   margin: 0;
 }
 
@@ -160,7 +195,7 @@ body {
 
 /* ...move the ball to the right */
 .checkbox:checked + .toggle-label .toggle-ball {
-  /* 50px width - 2px total border - 22px ball width = 26px space for movement. 
+  /* 52px width - 2px total border - 22px ball width = 26px space for movement. 
        We translate by 24px to leave the 2px padding on the right. */
   transform: translateX(24px);
   background-color: #1f2937;
