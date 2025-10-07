@@ -10,6 +10,11 @@ body {
   padding: 0;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   height: 100vh;
   display: flex;
@@ -99,6 +104,9 @@ body {
 
   text-align: center;
   padding: 3px;
+
+  outline: none;
+  border: none;
 }
 
 .features {
@@ -199,4 +207,51 @@ body {
        We translate by 24px to leave the 2px padding on the right. */
   transform: translateX(24px);
   background-color: #1f2937;
+}
+
+/* --- TOOLTIP STYLES  --- */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+
+  background: #273549;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  box-shadow: 0px 0px 5px #55f991;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+
+  border-color: #273549 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.copied-password-tooltip {
+  color: #55f991;
 }

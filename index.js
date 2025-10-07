@@ -195,6 +195,7 @@ passwordLengthInput.addEventListener("input", function (e) {
   }
 
   passwordLength = e.target.value;
+  clearPasswords();
 });
 
 symbolsToggleEl.addEventListener("change", (e) => {
@@ -216,3 +217,64 @@ numbersToggleEl.addEventListener("change", (e) => {
     clearPasswords();
   }
 });
+
+// <=== COPY TO CLIPBOARD FEATURE ===> //
+
+firstPasswordEl.addEventListener("click", function (event) {
+  copyPassword(event);
+});
+firstPasswordEl.addEventListener("mouseout", function (event) {
+  resetTooltip(event);
+});
+
+secondPasswordEl.addEventListener("click", function (event) {
+  copyPassword(event);
+});
+secondPasswordEl.addEventListener("mouseout", function (event) {
+  resetTooltip(event);
+});
+
+function copyPassword(event) {
+  const passwordInputId = event.target.id;
+  const passwordInput = document.getElementById(passwordInputId);
+
+  // Modern approach using the Clipboard API
+  try {
+    navigator.clipboard.writeText(passwordInput.value);
+
+    const tooltip = getTooltip(event.target.id);
+
+    const tooltipHTML = `<p>Copied: <span class="copied-password-tooltip">${
+      passwordInput.value.slice(0, 5) + "..."
+    }</span></p>`;
+
+    tooltip.innerHTML = tooltipHTML;
+
+    passwordInput.style.boxShadow = "0px 0px 4px #55f991";
+
+    setTimeout(() => {
+      passwordInput.style.boxShadow = "";
+    }, 700);
+  } catch (err) {
+    // fallback for older browsers
+    passwordInput.select();
+    passwordInput.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+  }
+}
+
+function resetTooltip(event) {
+  const tooltip = getTooltip(event.target.id);
+  tooltip.textContent = "Copy to clipboard";
+}
+
+function getTooltip(passwordInputElId) {
+  const firstPasswordInputElId = "first-password-el";
+  // const secondPasswordInputElId = "second-password-el"
+
+  if (passwordInputElId === firstPasswordInputElId) {
+    return document.getElementById("myTooltip1");
+  } else {
+    return document.getElementById("myTooltip2");
+  }
+}
