@@ -193,12 +193,12 @@ passwordLengthInput.addEventListener("input", function (e) {
 
   // setting the min value to 0
   if (inputValue < 0) {
-    inputValue = 0;
+    e.target.value = 0;
   }
 
   // setting the max value to 20
   if (inputValue > 20) {
-    inputValue = 20;
+    e.target.value = 20;
   }
 
   passwordLength = inputValue;
