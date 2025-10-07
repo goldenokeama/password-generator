@@ -158,8 +158,8 @@ function getPasswords(characterCollection, limit, lengthOfPassword) {
 }
 
 function renderPasswords(firstPassword, secondPassword) {
-  firstPasswordEl.textContent = firstPassword;
-  secondPasswordEl.textContent = secondPassword;
+  firstPasswordEl.value = firstPassword;
+  secondPasswordEl.value = secondPassword;
 }
 
 function generatePasswords(charsCollection) {
@@ -189,19 +189,12 @@ function clearPasswords() {
 }
 
 passwordLengthInput.addEventListener("input", function (e) {
-  const inputValue = e.target.value;
-
   // setting the min value to 0
-  if (inputValue < 0) {
+  if (e.target.value < 0) {
     e.target.value = 0;
   }
 
-  // setting the max value to 20
-  if (inputValue > 20) {
-    e.target.value = 20;
-  }
-
-  passwordLength = inputValue;
+  passwordLength = e.target.value;
 });
 
 symbolsToggleEl.addEventListener("change", (e) => {
