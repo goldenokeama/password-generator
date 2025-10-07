@@ -189,10 +189,19 @@ function clearPasswords() {
 }
 
 passwordLengthInput.addEventListener("input", function (e) {
-  if (e.target.value < 0) {
-    e.target.value = 0;
+  const inputValue = e.target.value;
+
+  // setting the min value to 0
+  if (inputValue < 0) {
+    inputValue = 0;
   }
-  passwordLength = e.target.value;
+
+  // setting the max value to 20
+  if (inputValue > 20) {
+    inputValue = 20;
+  }
+
+  passwordLength = inputValue;
 });
 
 symbolsToggleEl.addEventListener("change", (e) => {
