@@ -1,6 +1,7 @@
 # 🔐 Password Generator App
 
 A modern, secure, and easy-to-use password generator built with pure Vanilla JavaScript.
+
 Effortlessly create highly secure, customized passwords and copy them with a single click.
 
 ---
