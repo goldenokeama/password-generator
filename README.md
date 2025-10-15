@@ -47,7 +47,13 @@ You need a modern web browser to run the application (Chrome, Firefox, Safari, e
 ### Installation
 
 1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/goldenokeama/password-generator
+    ```
 2.  **Navigate to the Project Directory:**
+    ```bash
+    cd password-generator
+    ```
 3.  **Open the Application:**
     Simply open the `index.html` file in your preferred web browser.
 
